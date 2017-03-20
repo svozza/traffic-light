@@ -10,7 +10,7 @@ for (var i = 0; i < allLights.length; i++){
   allLights[i].addEventListener("click", displayLight);
 }
 
-// This function turns off current light (all lights) and turns on just the the selected light
+// This function turns off current light (all lights) and turns on only the selected light
 function displayLight(e){
   lightsOff();
 
@@ -31,8 +31,8 @@ function displayLight(e){
   }
 }
 
-// helper function to turn off lights
-function lightsOff() {
+// Helper function to turn off lights
+function lightsOff(){
   for (var i = 0; i < allLights.length; i++) {
     allLights[i].classList.remove("light-visible");
   }

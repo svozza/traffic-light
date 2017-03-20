@@ -5,21 +5,25 @@ body {
   background-color: #eafeea;
 }
 
-.container{
-  border-color: white;
-  background: #000;
-  width: 130px;
-  height: 375px;
-  box-shadow: 0 0 5px rgba(0,0,2, .9);
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .text-container{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   padding: 20px;
+}
+
+.container{
+  background: #000;
+  width: 132px;
+  height: 380px;
+  box-shadow: 0 0 5px rgba(0,0,2, .9);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
+}
+
+.spacer{
+  padding: 2px;
 }
 
 .light{
@@ -28,8 +32,9 @@ body {
   height: 100px;
   opacity: 0.3;
   padding: 10px;
-  border: 1px solid white;
+  border: 2px solid white;
   margin: auto;
+  box-shadow: 0 0 5px rgba(255,255,255, 1);
 }
 
 #red{
