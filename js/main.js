@@ -5,6 +5,7 @@ var yellowID = document.getElementById('yellow');
 var greenID = document.getElementById('green');
 var redID = document.getElementById('red');
 
+
 // Adding click event listeners to each traffic light color id
 for (var i = 0; i < allLights.length; i++){
   allLights[i].addEventListener("click", displayLight);
