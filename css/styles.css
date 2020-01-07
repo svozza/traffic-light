@@ -52,3 +52,7 @@ body {
 .light-visible {
   opacity: 1;
 }
+
+.postParkingCheck {
+  display: none;
+}

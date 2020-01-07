@@ -8,7 +8,9 @@
 
   <body>
     <div class="text-container">
-      Click the light below to change the traffic light colors
+      <p id="parkingPermitted" class="postParkingCheck">You've been allocated parking space number: <span id="parkingSpaceId">?</span></p>
+      <p id="parkingDenied" class="postParkingCheck">You are not permitted to park here</p>
+      <p id="parkingPermissions">Determining parking permissions; one moment please...</p>
     </div>
 
     <div class="container">
@@ -16,9 +18,11 @@
       <div class="spacer"></div>
       <div class="light" id="yellow"></div>
       <div class="spacer"></div>
-      <div class="light light-visible" id="green"></div>
+      <div class="light" id="green"></div>
     </div>
 
     <script src="./js/main.js"></script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/traffic-lights.js"></script>
   </body>
 </html>
