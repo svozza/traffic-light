@@ -1,22 +1,28 @@
+var client = new AWS.DynamoDB.DocumentClient({
+        accessKeyId: 'xxx',
+        secretAccessKey: 'xxx',
+        region: 'us-east-1'
+    });
+
 window.setInterval(function() {
-    resetView();
-	response = getCarParkStatus();
-	modifyView(response);
+    //resetView();
+    getCarParkStatus().then(modifyView);
 }, 2000);
 
+let allowedIn = false;
+
 function getCarParkStatus() {
-    //Need to replace this with a call to APIGW
-    permitted = Math.round(Math.random()) == 1;
-    color = permitted ? 'green':'red'
-    spaceNumber = Math.floor(Math.random() * 100) + 1;
-
-    response = {
-        "color": color,
-        "permitted": permitted,
-        "spaceNumber": spaceNumber
-    }
-
-    return response
+    return client.scan({TableName: 'EntryStatus'}).promise()
+        .then(({Items}) => {
+            const first = Items[0];
+            if(allowedIn !== first.AllowedIn) resetView();
+            allowedIn = first.AllowedIn;
+            return {
+                "color": first.AllowedIn ? 'green' : 'red',
+                "permitted": first.AllowedIn,
+                "spaceNumber": first.SpaceNumber
+            }
+        });
 }
 
 function resetView() {
@@ -29,9 +35,7 @@ function resetView() {
 function modifyView(response) {
     console.log(response.permitted);
     $('#parkingPermissions').hide();
-    if (response.permitted) {
-        $('#parkingPermitted').show();
-    } else $('#parkingDenied').show();
+    response.permitted ? $('#parkingPermitted').show() : $('#parkingDenied').show();
     $('#parkingSpaceId').text(response.spaceNumber);
     $('#'+response.color).toggleClass('light-visible', true);
 }
